@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AZQCn48fT0ViJCqOmSVB2fXmDWVxthb01OIKpKaTIK3TcjZXNHUpqtUgwVT7sFtZefZ8adbYQbg7EeTN&currency=USD"></script>
+  <script src="\js\alertify.min.js"></script>
+  <script src="\js\checkout.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="\css\style.css">
+  <link rel="stylesheet" href="\css\search.css">
+  <link rel="stylesheet" href="\css\alertify.min.css">
+</head>
+<body>
+    
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/index.ejs">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+              viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Urban Paws</span>
+          </a>
+          <nav
+            class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-gray-900" href="/fooditems.ejs">Food Items</a>
+            <a class="mr-5 hover:text-gray-900" href="/accessories.ejs">Accessories</a>
+            <a class="mr-5 hover:text-gray-900" href="/petwalkers.ejs">Pet-Walkers</a>
+            <a class="mr-5 hover:text-gray-900">Foster-Home Booking</a>
+            <a class="mr-5 hover:text-gray-900" href="/profile.ejs">Profile</a>
+            <a class="mr-5 hover:text-gray-900" href="/cart.ejs">Cart</a>
+          </nav>
+          <div class="input-group">
+            <div class="form-outline">
+              
+              
+              
+            
+              <p class="mr-5 hover:text-gray-900" href="login1.html">
+                
+              </p>
+            </div>
+            <p style="font-size: 50px;"><%= current_user.username %></p>
+              <i class="fas fa-search"></i>
+            </button>
+    
+    
+          </div>
+        </div>
+      </header>
+        <section>
+    <div class="container mt-5">
+       
+          <form action="/placeorder" method="post">
+              
+              <div class="row">
+                  <div class="col-md-7" style="margin-bottom: 10px;">
+                      <div class="card shadow">
+                          <div class="card-body">
+                              <h1>Basic Details</h1>
+                              <hr>
+                              <div class="row">
+                                  <div class="col-md-6 mt-3">
+                                      <% if (current_user.username) {%>
+                                      <label style="font-size: 2rem;font-weight: bolder;">First Name</label>
+                                      <input type="text" class="form-control" name="fname" placeholder="First Name" style="font-size: 1.5rem; padding: 20px 5px 20px 5px;" value="<%=current_user.username%>" required>
+                                      <% }else { %>
+                                      <label style="font-size: 2rem;font-weight: bolder;">First Name</label>
+                                      <input type="text" class="form-control" name="fname" placeholder="First Name" style="font-size: 1.5rem; padding: 20px 5px 20px 5px;" required>
+                                      <% }  %>
+                                  </div>
+                                  
+                                  <div class="col-md-6 mt-4">
+                                      <% if (current_user.useremail) { %>
+                                      <label style="font-size: 2rem;font-weight: bolder;">Email</label>
+                                      <input type="email" class="form-control" name="email" placeholder="Email" style="font-size: 1.5rem; padding: 20px 5px 20px 5px;" value="<%=current_user.useremail%>" required>
+                                      <% } else {%>
+                                      <label style="font-size: 2rem;font-weight: bolder;">Email</label>
+                                      <input type="email" class="form-control" name="email" placeholder="Email" style="font-size: 1.5rem; padding: 20px 5px 20px 5px;" required>
+                                      <% }  %>
+                                  </div>
+                                  <div class="col-md-6 mt-4">
+                                    <% if (current_user.userphone) { %>
+                                    <label style="font-size: 2rem;font-weight: bolder;">Phone no</label>
+                                    <input type="number" class="form-control" name="mobile" placeholder="Mobile" style="font-size: 1.5rem; padding: 20px 5px 20px 5px;" value="<%=current_user.userphone%>" onkeypress="if(this.value.length == 10) return false;" required>
+                                    <% } else {%>
+                                    <label style="font-size: 2rem;font-weight: bolder;">Phone no</label>
+                                    <input type="phone" class="form-control" name="mobile" placeholder="Mobile" style="font-size: 1.5rem; padding: 20px 5px 20px 5px;" pattern="[7-9]{1}[0-9]{9}" onkeypress="if(this.value.length == 10) return false;" required>
+                                    <% }  %>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <label style="font-size: 2rem;font-weight: bolder;">Address</label>
+                                    <textarea class="form-control" name="address" placeholder="Address" style="font-size: 1.5rem;" required></textarea>
+                                </div>
+                                <div class="col-md-6 mt-4">
+                                    <label style="font-size: 2rem;font-weight: bolder;" for="city">State</label><br/>
+                                    <input type=" text" value="Gujarat"  readonly style="font-size: 25px;">
+                                    
+                                </div>
+                                <div class="col-md-6 mt-4" style="margin-bottom: 20px;">
+                                    <label style="font-size: 2rem;font-weight: bolder;" for="area">City</label><br/>
+                                    <select name="area1" style="font-size: 1.5rem;" class="form-control" id="aread" required>
+                                        <% for (const a of area){ %>
+                                        <option value="<%=a.city%>"><%=a.city%></option>
+                                        <% }  %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card shadow">
+                        <div class="card-body card-data">
+                            <h1>Order Summary</h1>
+                            <hr>
+                            <% if (cartproducts) { %>
+                            <table class="table table-stripeds table-bordered">
+                                <thead>
+                                    <tr style="font-size: 1.5rem;">
+                                        <th>Name</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (const item of cartproducts){ %>
+                                    <tr style="font-size: 1.5rem;">
+                                        <td>
+                                            <img src="<%= item.image%>" alt="myImage" height="50px" width="50px" class="mr-2">
+                                            
+                                        </td>
+                                        <td><%=item.quantity %></td>
+                                        <td><%=item.price %></td>
+                                    </tr>
+                                    <% }  %>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <h3>Cart Total
+                                <span class="float-right"> Rs <%=total_price%></span>
+                            </h3>
+                            <h3 class="dcharges">Delivery Charges
+                                <span class="float-right"> + Rs <span class="charges"><%=delArea%></span></span>
+                            </h3>
+                            
+                          
+                            <h3 class="dcharges">Offer
+                                <span class="float-right"><span class="oferTotal">0</span></span>
+                            </h3>
+                          
+                            <hr>
+                            <h3 class="grandTotal1">Grand Total
+                                <span class="float-right"> Rs <span class="grandTotal2" id="a1"><%=grandTotal%></span></span>
+                            </h3>
+                            <input type="hidden" name="payment_mode" value="COD">
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-success w-100 mt-3" style="font-size: 1.5rem; padding: 10px 0 10px 0;     background-color: green; "onMouseOver="this.style.backgroundColor='red'" onMouseOut="this.style.backgroundColor='green'">COD | Place Order</button>
+                                <!-- <button type="button" class="btn btn-primary w-100 mt-3 payWithRazorpay" style="font-size: 1.5rem; padding: 10px 0 10px 0;  "onMouseOver="this.style.backgroundColor='red'" onMouseOut="this.style.backgroundColor='blue'">Pay With Razorpay</button> -->
+                                <div id="paypal-button-container"></div>
+                            </div>
+                            <% } else {%>
+                            <h3>Your cart is empty</h3>
+                            <% }  %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>       
+</section>
+<script>
+   
+      paypal.Buttons({
+          // Sets up the transaction when a payment button is clicked
+          style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'paypal',
+            
+          },
+          onClick : function(data,actions){
+            var fname = $("[name='fname']").val();
+           
+            var email = $("[name='email']").val();
+            var mobile = $("[name='mobile']").val();
+            var address = $("[name='address']").val();
+            
+            var area = $('#aread :selected').text();
+           
+            var a=$("#a1").text()
+            var token = $("[name='csrfmiddlewaretoken']").val();
+    
+            if(fname == ""  || email == "" || mobile == "" || address == "" ){
+                swal("Error", "Please fill all details!", "error");
+                return false;
+            }else{
+                return true;
+            }
+          },
+          createOrder: (data, actions) => {
+            var a=document.getElementById('a1').innerText
+            return actions.order.create({
+             
+              purchase_units: [{
+                
+                amount: {
+                  value: a//'{{total_price | stringformat:"d"}}' // Can also reference a variable or function
+                }
+              }]
+            });
+          },
+          // Finalize the transaction after payer approval
+          onApprove: (data, actions) => {
+            return actions.order.capture().then(function(orderData) {
+              // Successful capture! For dev/demo purposes:
+            //   console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            //   const transaction = orderData.purchase_units[0].payments.captures[0];
+            //   alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+              // When ready to go live, remove the alert and show a success message within this page. For example:
+              // const element = document.getElementById('paypal-button-container');
+              // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+              // Or go to another URL:  actions.redirect('thank_you.html');
+        //       const fname = req.body.fname;
+        // const email = req.body.email;
+        // const mobile = req.body.mobile;
+        // const city = req.body.area1;
+        // const address = req.body.address;
+
+              var fname = $("[name='fname']").val();
+             
+              var email = $("[name='email']").val();
+              var mobile = $("[name='mobile']").val();
+              var address = $("[name='address']").val();
+              
+              var area = $('#aread :selected').text();
+             
+              
+              data = {
+                "fname":fname,
+               
+                "email":email,
+                "mobile":mobile,
+                "address":address,
+                "area1":area,
+                
+               
+                "payment_mode":"paid by paypal",
+                "payment_id":orderData.id,
+               
+              }
+              $.ajax({
+                method:"POST",
+                url: "/placeorder",
+                data: data,
+                success: function (response) {
+                  swal("congratulations!",response.status,"success").then((value)=>{
+                window.location.href='/index.ejs'
+               
+                  })
+                }
+              });
+            });
+          }
+        }).render('#paypal-button-container');
+      </script>
+ 
+</body>
+</html>

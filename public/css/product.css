@@ -1,0 +1,157 @@
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+    
+    header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    }
+    
+    nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    }
+    
+    nav li {
+    float: left;
+    }
+    
+    nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+    
+    nav a:hover {
+    background-color: #111;
+    }
+    
+    .product-img img {
+    width: 100%;
+    }
+    
+    .product-carousel {
+    position: relative;
+    overflow: hidden;
+    }
+    
+    .carousel-container {
+    display: flex;
+    }
+    
+    .carousel-item {
+    flex: 1;
+    }
+    
+    .carousel-item img {
+    width: 100%;
+    }
+    
+    .carousel-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    }
+    
+    .prev-btn, .next-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    }
+    
+    .prev-btn:hover, .next-btn:hover {
+    background-color: #111;
+    }
+    
+    .product-pricing {
+    text-align: center;
+    padding: 20px;
+    }
+    
+    .product-pricing h3 {
+    margin: 0;
+    }
+    
+    .product-pricing p {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+    }
+    
+    .add-to-cart {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    }
+    
+    .add-to-cart:hover {
+    background-color: #111;
+    }
+    
+    .product-feedback {
+    padding: 20px;
+    }
+    
+    .product-feedback h3 {
+    margin: 0;
+    }
+    
+    .feedback-container {
+    margin: 20px 0;
+    }
+    
+    .feedback-item {
+    margin: 10px 0;
+    }
+    
+    footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    }
+    
+    footer p {
+    margin: 0;
+    }
+    .product-description {
+        padding: 20px;
+      }
+      
+      .product-description h3 {
+        margin: 0;
+      }
+      
+      .product-description p {
+        margin: 10px 0;
+      }
+      
+      .buy-now {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      
+      .buy-now:hover {
+        background-color: #111;
+      }
+      

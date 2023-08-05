@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+    
+    <style>
+       /* General styles for the form */
+form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Style for the input fields */
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for the label element */
+label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Style for error messages */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <center><h1>Fill All Details!</h1></center>
+    <form aciton="/changepasswd.ejs" name="myForm" onsubmit="return validateForm()" method="post">
+       
+
+        <div class="formdesign" id="email">
+            Email: <input type="email" name="femail" required><b><span class="error"> </span></b>
+        </div>
+
+      
+
+        <div class="formdesign" id="pass">
+            Password: <input type="password" name="fpass" required><b><span class="error"></span> </b>
+        </div>
+
+        <div class="formdesign" id="pass">
+            New Password: <input type="password" name="nfpass" required><b><span class="error"></span> </b>
+        </div>
+
+        <div class="formdesign" id="cpass">
+            Confirm Password: <input type="password" name="fcpass" required><b><span class="error"></span></b>
+        </div>
+
+      
+
+
+        <button class="but" type="submit" name="Submit"> Submit </button>
+
+    </form>
+
+
+
+</body>
+<script>
+    function clearErrors() {
+
+        errors = document.getElementsByClassName('error');
+        for (let item of errors) {
+            item.innerHTML = "";
+        }
+
+
+    }
+    function seterror(id, error) {
+        //sets error inside tag of id 
+        element = document.getElementById(id);
+        element.getElementsByClassName('error')[0].innerHTML = error;
+
+    }
+    function validateForm() {
+        var returnval = true;
+        clearErrors();
+
+        //perform validation and if validation fails, set the value of returnval to false
+      
+
+        var email = document.forms['myForm']["femail"].value;
+        if (email.length > 25) {
+            seterror("email", "*Your email length is too long");
+            returnval = false;
+        }
+
+        
+       
+        var passwd = document.forms['myForm']["fpass"].value;
+        if (passwd < 6) {
+            seterror("pass", "*your password is too short");
+            returnval = false;
+        }
+
+        var npasswd=document.forms['myForm']["nfpass"].value;
+        if (npasswd < 6) {
+            seterror("pass", "*your password is too short");
+            returnval = false;
+        }
+
+        var cpasswd = document.forms['myForm']["fcpass"].value;
+        if (cpasswd != npasswd) {
+            seterror("cpass", "*your confirmation passwd is not match with your password");
+            returnval = false;
+        }
+        return returnval;
+    }</script>
+
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="\js\ajax.js"></script>
+  <link rel="stylesheet" href="\css\search.css">
+  <script src="\js\alertify.min.js"></script>
+  <link rel="stylesheet" href="\css\productDetails.css">
+  <link rel="stylesheet" href="\css\alertify.min.css">
+  <style>
+    .feedback-box {
+  width: 400px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 20px auto;
+  box-shadow: 0px 0px 10px #ccc;
+}
+
+.feedback-box h2 {
+  margin-top: 0;
+}
+
+.feedback-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-box label {
+  margin-bottom: 5px;
+}
+
+.feedback-box input[type="text"],
+.feedback-box input[type="email"],
+.feedback-box textarea {
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.feedback-box input[type="text"]:focus,
+.feedback-box input[type="email"]:focus,
+.feedback-box textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px #ccc;
+}
+
+.feedback-box button[type="submit"] {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.feedback-box button[type="submit"]:hover {
+  background-color: #0062cc;
+}
+
+  </style>
+</head>
+<body>
+  <%- include('header') %>
+
+    <section class="text-gray-600 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="lg:w-4/5 mx-auto flex flex-wrap product_data">
+            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded img" src="/images/<%=item1.image%>">
+            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <h2 class="text-sm title-font text-gray-500 tracking-widest"><%= item1.category %></h2>
+              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= item1.fname %></h1>
+              <div class="flex mb-4">
+                <span class="flex items-center">
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="currentcolor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <span class="text-gray-600 ml-3 ">RS <%=item1.fprice%></span>
+                </span>
+                
+              </div>
+              <p class="leading-relaxed"><%=item1.description%></p>
+             
+              
+              <div class="flex" style="margin-top: 35px;">
+                <span class="title-font font-medium text-2xl text-gray-900"></span>
+                 <div class="quantity">
+                  <button class="minus-btn">-</button>
+                  <input  class="quantity-input" value="1" readonly>
+                  <button class="plus-btn">+</button>
+                </div>
+                <input type="hidden" value="<%= item1.fname %>" class="prod_id">
+                <input type="hidden" value="<%= item1.fprice %>" class="price">
+                
+                <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded addToCartBtn">Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="feedback-box">
+        <h2>Feedback</h2>
+        <form action="/feedback" method="post">
+          
+          <input type="hidden" id="name" name="pname" value="<%= item1.fname %>" >
+          
+          <input type="hidden" id="name" name="name" value="session.username" required>
+         
+      
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+      
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+</body>
+</html>

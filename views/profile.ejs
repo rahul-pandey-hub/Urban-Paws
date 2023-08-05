@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Paws</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/index.css">
+ 
+  <style>
+     body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 60%;
+            max-width: 500px;
+        }
+
+        td {
+            font-size: 18px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        strong {
+            margin-right: 10px;
+        }
+    
+  </style>
+</head>
+<body>
+  <!--Navbar section--> 
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/index.ejs">
+        <img src="\img\logo.png" alt="" style="max-width: 10%;">
+        <span class="ml-3 text-xl">Urban Paws</span>
+      </a>
+      <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 hover:text-gray-900" href="/fooditems.ejs">Food Items</a>
+        <a class="mr-5 hover:text-gray-900" href="/accessories.ejs" >Accessories</a>
+        <a class="mr-5 hover:text-gray-900" href="/petwalkers.ejs">Blog</a>
+        
+        <a class="mr-5 hover:text-gray-900" href="/profile.ejs">Profile</a>
+        <a class="mr-5 hover:text-gray-900" href="/cart.ejs">Cart</a>
+        <a class="mr-5 hover:text-gray-900" href="/orders.ejs">My Order</a>
+      </nav>
+      <div class="input-group">
+        <div class="form-outline">
+         
+         
+        </div>
+        <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button>
+     
+      
+      </div>
+    </div>
+  </header>
+      <h1>My Profile</h1>
+    <table>
+        <tr>
+            <td><strong>Name:</strong></td>
+            <td>
+                <%= session.username %>
+            </td>
+
+        </tr>
+        <tr>
+            <td><strong>Email:</strong></td>
+            <td>
+                <%= session.useremail %>
+            </td>
+
+        </tr>
+        <tr>
+            <td><strong>Phone No:</strong></td>
+            <td>
+                <%= session.userphone %>
+            </td>
+
+        </tr>
+
+
+
+    </table>
+    
+    
+</body>
+</html>

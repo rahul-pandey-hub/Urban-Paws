@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="\js\ajax.js"></script>
+  <script src="\js\ProductDetail.js"></script>
+  <script src="\js\alertify.min.js"></script>
+  <link rel="stylesheet" href="\css\productDetails.css">
+  <link rel="stylesheet" href="\css\style.css">
+  <link rel="stylesheet" href="\css\search.css">
+  <link rel="stylesheet" href="\css\alertify.min.css">
+ 
+</head>
+<body>
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/index.ejs">
+        <img src="\img\logo.png" alt="" style="max-width: 10%;">
+        <span class="ml-3 text-xl">Urban Paws</span>
+      </a>
+      <nav
+        class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 hover:text-gray-900" href="/fooditems.ejs">Food Items</a>
+        <a class="mr-5 hover:text-gray-900" href="/accessories.ejs">Accessories</a>
+        <a class="mr-5 hover:text-gray-900" href="/petwalkers.ejs">Blog</a>
+        
+        <a class="mr-5 hover:text-gray-900" href="/profile.ejs">Profile</a>
+        <a class="mr-5 hover:text-gray-900" href="/cart.ejs">Cart</a>
+        <a class="mr-5 hover:text-gray-900" href="/orders.ejs">My Order</a>
+      </nav>
+      <div class="input-group">
+       
+        
+          <i class="fas fa-search"></i>
+        </button>
+
+
+      </div>
+    </div>
+  </header>
+
+   <section>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card shadow">
+                        <div class="card-body card-data">
+                          <% if (a>0) {%>
+                                <% for (const cartItem of userCart) {%>
+                                    <div class="row product_data">
+                                        <div class="col-md-2 my-auto">
+                                            <img src="<%= cartItem.image%>" alt="Image here" height="90px" width="90px">
+                                        </div>
+                                        <div class="col-md-3 my-auto">
+                                            <h3><%= cartItem.pname%></h3>
+                                        </div>
+                                        <div class="col-md-2 my-auto">
+                                            <h3>Rs <%= cartItem.price%></h3>
+                                        </div>
+                                        <div class="col-md-3 my-auto">
+                                            
+                                            <input type="hidden" class="product_id" name="id" value="<%=cartItem.pname%>">
+                                            <b><label for="Quantity" style="font-size: 1.5rem;">Quantity</label></b>
+                                                <div class="input-group text-center mb-3" style="width: 130px;">
+                                                    
+                                                    <input type="text" name="quantity" class="form-control qty-input text-center" value="<%=cartItem.quantity%>" style="font-size: 1.7rem; font-weight: bolder;" readonly>
+                                                    
+                                                </div>
+                                        </div>
+                                        <div class="col-md-2 my-auto my-data">
+                                          
+                                            <button class="btn btn-danger delete-cart-current-product" style="font-size: 1.5rem; position: relative; top: 8px;" name=""><i class="fa fa-trash"></i> Remove</button>
+                                          
+                                          </div>
+                                    </div>
+                                    <hr>
+                                    <% } %>
+                                <a href="/checkout.ejs" class="btn btn-outline-success" style="font-size: 1.5rem; margin-top: 10px;">Checkout</a>
+                                
+                                <% } else {%>
+                            <h1>Your cart is empty!</h1>
+                            <%  } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </section>
+</body>
+</html>

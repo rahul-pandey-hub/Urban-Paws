@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="\js\ajax.js"></script>
+    <script src="\js\ProductDetail.js"></script>
+    <script src="\js\alertify.min.js"></script>
+    <link rel="stylesheet" href="\css\productDetails.css">
+    <link rel="stylesheet" href="\css\style.css">
+    <link rel="stylesheet" href="\css\alertify.min.css">
+</head>
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/index.ejs">
+            <img src="\img\logo.png" alt="" style="max-width: 10%;">
+            <span class="ml-3 text-xl">Urban Paws</span>
+          </a>
+          <nav
+            class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-gray-900" href="/fooditems.ejs">Food Items</a>
+            <a class="mr-5 hover:text-gray-900" href="/accessories.ejs">Accessories</a>
+           
+            <a class="mr-5 hover:text-gray-900" href="">Blog</a>
+            <a class="mr-5 hover:text-gray-900" href="/profile.ejs">Profile</a>
+            <a class="mr-5 hover:text-gray-900" href="/cart.ejs">Cart</a>
+            <a class="mr-5 hover:text-gray-900" href="/orders.ejs">My Order</a>
+          </nav>
+          <div class="input-group">
+            <div class="form-outline">
+              
+              
+              
+              
+              <p class="mr-5 hover:text-gray-900" href="login1.html">
+                
+              </p>
+            </div>
+            
+              <i class="fas fa-search"></i>
+            </button>
+    
+    
+          </div>
+        </div>
+      </header>
+      
+      
+    <!-- header section end -->
+<section>   
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h1 class="mb-0">Order View
+                            <a href="/orders.ejs" class="btn btn-warning float-right text-white" style="font-weight: bolder; font-size: 1.5rem;"><i class="fa fa-reply"></i> Back</a>
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                       <div class="row">
+                            <div class="col-md-6">
+                                <h3>Shippng Details</h3>
+                                <hr>
+                                <label class="mt-2" style="font-weight: bolder; font-size: 1.5rem;">First Name</label>
+                                <div class="border p-1" style="font-weight: 500; font-size: 1.5rem;">
+                                    <%=userOrderData.orderfname %>
+                                </div>
+                               
+                                <label class="mt-2" style="font-weight: bolder; font-size: 1.5rem;">Email</label>
+                                <div class="border p-1" style="font-weight: 500; font-size: 1.5rem;">
+                                    <%=userOrderData.orderemail%>
+                                </div>
+                                <label class="mt-2" style="font-weight: bolder; font-size: 1.5rem;">Mobile</label>
+                                <div class="border p-1" style="font-weight: 500; font-size: 1.5rem;">
+                                    <%=userOrderData.orderphone%>
+                                </div>
+                                <label class="mt-2" style="font-weight: bolder; font-size: 1.5rem;">Address</label>
+                                <div class="border p-1" style="font-weight: 500; font-size: 1.5rem;">
+                                    <%=userOrderData.order_delivery_address%> , 
+                                    <%=userOrderData.city%>
+                                </div>
+                               
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Product Details</h3>
+                                <hr>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="font-weight: bolder; font-size: 1.8rem;">Name</th>
+                                            <th style="font-weight: bolder; font-size: 1.8rem;">Quantity</th>
+                                            <th style="font-weight: bolder; font-size: 1.8rem;">Price</th>
+                                            <th style="font-weight: bolder; font-size: 1.8rem;">Image</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for (const item of userOrderDetails){ %>
+                                        <tr>
+                                            <td style="font-weight: 500; font-size: 1.5rem;"><%=item.pname %></td>
+                                            <td style="font-weight: 500; font-size: 1.5rem;"><%=item.quantity%></td>
+                                            <td style="font-weight: 500; font-size: 1.5rem;"><%=item.price%></td>
+                                            <td style="font-weight: 500; font-size: 1.5rem;">
+                                                <img src="<%=item.image%>" alt="productimage" height="50px" width="50px">
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                <h4 class="mb-3" style="font-size: 24px;"> Grand Total :
+                                     <span class="float-right" style="font-size: 24px;"> <%=userOrderData.total_amount%></span>
+                                </h4>
+                                <h5 class="border p-2" style="font-weight: 500; font-size: 1.5rem;">Payment Mode : <%=userOrderData.order_payment_method %></h5>
+                                <h5 class="border p-2" style="font-weight: 500; font-size: 1.5rem;">Order Status : <%=userOrderData.order_status %></h5>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    

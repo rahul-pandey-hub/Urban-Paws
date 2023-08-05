@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <link rel="stylesheet" href="\css\search.css">
+  <style>
+    #input{
+      border: none;
+    }
+  </style>
+  <style>
+    .toys {
+      text-align: center;
+      font-size: large;
+    }
+
+    #input {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+    
+  <!--Navbar section--> 
+  <%- include('header') %>
+    
+    <!--Product section-->  <% if (a>0) {%>
+    <section class="text-gray-600 body-font">  
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+         
+          <% for (const user of b) { %>
+            
+          <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+            <a class="block relative h-48 rounded overflow-hidden" href="/foodproduct.ejs">
+              <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\images\<%=user.image%>">
+            </a>
+  
+            <div class="mt-4">
+              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1"><%= user.category %></h3>
+              <form action="/foodproduct.ejs" method="post">
+              <input name="item" value="<%= user.fname %>" class="text-gray-900 title-font text-lg font-medium" type="text"  id="input" readonly>
+              <p class="mt-1">Rs <%= user.fprice %></p>
+              
+              <button
+                      type="submit"
+                      name="submit"
+                      class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    >
+                      View Product
+                    </button>
+              
+            </div>
+          </div>
+        </form>
+          <% } %>
+          
+
+        </div>
+      </div>
+    
+    </section>
+    <% } else {%>
+            
+      <div class="toys">
+        <h1><strong>"The Food item section is empty !"</strong></h1>
+      </div>
+      <%  } %>
+  <div class="prose">
+    <!-- ... -->
+  </div>
+  <%- include('footer') %>
+</body>
+</html>

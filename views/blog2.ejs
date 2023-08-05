@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pet Hygiene</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+	<style>
+        
+    .header {
+	background-color: #4CAF50;
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+
+main {
+	margin: 20px;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+h2 {
+	font-size: 30px;
+	color: #4CAF50;
+	margin-top: 50px;
+}
+
+p {
+	font-size: 20px;
+	line-height: 1.5;
+	margin-top: 20px;
+}
+
+ul {
+	font-size: 20px;
+	line-height: 1.5;
+	margin-top: 20px;
+}
+
+li {
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+
+li:before {
+	content: "\2022";
+	margin-right: 10px;
+	font-size: 25px;
+	color: #4CAF50;
+}
+.button {
+			display: block;
+			margin: 20px auto 0;
+			padding: 10px 20px;
+			font-size: 18px;
+			color: #fff;
+			background-color: #0099cc;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+    </style>
+</head>
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/index.ejs">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+              viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Urban Paws</span>
+          </a>
+          <nav
+            class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-gray-900" href="/fooditems.ejs">Food Items</a>
+            <a class="mr-5 hover:text-gray-900" href="/accessories.ejs">Accessories</a>
+            <a class="mr-5 hover:text-gray-900" href="/petwalkers.ejs">Blog</a>
+            
+            <a class="mr-5 hover:text-gray-900" href="/profile.ejs">Profile</a>
+            <a class="mr-5 hover:text-gray-900" href="/cart.ejs">Cart</a>
+            <a class="mr-5 hover:text-gray-900" href="/orders.ejs">My Order</a>
+          </nav>
+          <div class="input-group">
+            <div class="form-outline">
+              
+              
+              
+              
+              <p class="mr-5 hover:text-gray-900" href="login1.html">
+                
+              </p>
+            </div>
+            
+              <i class="fas fa-search"></i>
+            </button>
+    
+    
+          </div>
+        </div>
+      </header>
+	<header class="header">
+		<h1>Pet Hygiene</h1>
+	</header>
+
+	<main>
+		<h2>Why is pet hygiene important?</h2>
+		<p>Pet hygiene is crucial for the overall health and wellbeing of your pet. Just like humans, pets can also suffer from various health issues if their hygiene is not maintained properly.</p>
+
+		<h2>Tips for maintaining pet hygiene:</h2>
+		<ul>
+			<li>Regular Bathing</li>
+			<li>Brushing their Teeth</li>
+			<li>Regular Grooming</li>
+			<li>Cleaning their Living Space</li>
+			<li>Regular Vet Checkups</li>
+		</ul>
+
+		<p>Now that we know the importance of pet hygiene let's move on to the fun part of designing the blog.</p>
+
+        <button class="button" ><a href="/contact.ejs"> Contact me</a></button>
+	</main>
+</body>
+</html>

@@ -1,0 +1,38 @@
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+}
+
+.plus-btn,
+.minus-btn {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.plus-btn:hover,
+.minus-btn:hover {
+  background-color: #ccc;
+}
+
+.plus-btn {
+  border-left: none;
+}
+
+.minus-btn {
+  border-right: none;
+}
+
+.quantity-input:focus {
+  outline: none;
+}

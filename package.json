@@ -1,0 +1,34 @@
+{
+  "name": "urbanpaws",
+  "version": "1.0.0",
+  "description": "shopping website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dhruv,karan,sumeet",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.1.4",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "html-pdf": "^3.0.1",
+    "mongoose": "^6.11.1",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-update-if-current": "^1.4.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7",
+    "popups": "^1.1.3"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
